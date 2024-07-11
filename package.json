@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "heroku-prebuild": "concurrently \"cd frontend && npm install\" \"cd backend && npm install\"",
-    "start": "concurrently \"npm start --prefix frontend\" \"npm start --prefix backend\""
+  "heroku-prebuild": "npx concurrently \"npm install --prefix frontend\" \"npm install --prefix backend\"",
+  "start": "npx concurrently \"npm start --prefix frontend\" \"npm start --prefix backend\""
   },
   "author": "",
   "license": "ISC",
