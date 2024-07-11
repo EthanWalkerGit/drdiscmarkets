@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'; 
-import backendURL from '../constants/index.js';
+import { backendURL } from '../constants/index.js';
 
 function Grid() {
   const [albums, setAlbums] = useState([]);
