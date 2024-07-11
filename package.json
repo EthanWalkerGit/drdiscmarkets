@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "heroku-prebuild": "npx concurrently \"npm install --prefix frontend\" \"npm install --prefix backend\"",
+  "heroku-postbuild": "npx concurrently \"npm install --prefix frontend\" \"npm install --prefix backend\"",
   "start": "npx concurrently \"npm start --prefix frontend\" \"npm start --prefix backend\""
   },
   "author": "",
