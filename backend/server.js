@@ -7,7 +7,7 @@ const app = express()
 const cors = require('cors');
 const authRoutes = require('./routes/auth');
 
-const allowedOrigins = ['http://localhost:5173', 'http://localhost:3000', 'https://drdiscmarket-f8ee92798f99.herokuapp.com', 'https://drdiscmarket.herokuapp.com'];
+const allowedOrigins = ['http://localhost:5173', 'http://localhost:4000', 'https://drdiscmarket-f8ee92798f99.herokuapp.com', 'https://drdiscmarket.herokuapp.com'];
 
 app.use(express.json())
 
@@ -23,8 +23,8 @@ app.use(cors({
   }
 }));
 
-app.listen(3000, ()=> {
-  console.log("Node App is running on port 3000")
+app.listen(4000, ()=> {
+  console.log("Node App is running on port 4000")
 })
 
 app.use('/api/auth', authRoutes);
