@@ -33,17 +33,6 @@ app.use((req, res, next) => {
   }
 });
 
-app.use(express.static(path.join(__dirname, 'frontend')));
-
-// The "catchall" handler: for any request that doesn't match one above, send back the front-end's index.html file.
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
-});
-
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
-
 app.use('/api/auth', authRoutes);
 
 //get and show all items in db
@@ -111,6 +100,17 @@ app.delete('/albums/:id', async(req, res) => {
     res.status(500).json({message: error.message})
   }
 })
+
+app.use(express.static(path.join(__dirname, 'frontend')));
+
+// The "catchall" handler: for any request that doesn't match one above, send back the front-end's index.html file.
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
+});
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
 
 // connection
 mongoose
