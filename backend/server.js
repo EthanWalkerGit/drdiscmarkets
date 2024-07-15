@@ -6,10 +6,24 @@ const User = require('./models/User')
 const app = express()
 const cors = require('cors');
 const authRoutes = require('./routes/auth');
+const port = process.env.PORT || 4000;
 
 const allowedOrigins = ['http://localhost:3000', 'http://localhost:4000', 'https://drdiscmarket-f8ee92798f99.herokuapp.com', 'https://drdiscmarket.herokuapp.com'];
 
 app.use(express.json())
+
+// Middleware to redirect HTTP to HTTPS
+app.use((req, res, next) => {
+  if (req.header('x-forwarded-proto') !== 'https' && process.env.NODE_ENV === 'production') {
+    res.redirect(`https://${req.header('host')}${req.url}`);
+  } else {
+    next();
+  }
+});
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
 
 // Updated CORS configuration
 app.use(cors({
@@ -23,9 +37,6 @@ app.use(cors({
   }
 }));
 
-app.listen(4000, ()=> {
-  console.log("Node App is running on port 4000")
-})
 
 app.use('/api/auth', authRoutes);
 
