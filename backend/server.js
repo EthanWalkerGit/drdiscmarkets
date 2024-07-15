@@ -8,9 +8,9 @@ const cors = require('cors');
 const authRoutes = require('./routes/auth');
 const port = process.env.PORT || 4000;
 
-const allowedOrigins = ['http://localhost:4000', 'https://drdiscmarket-f8ee92798f99.herokuapp.com', 'https://drdiscmarket.ca'];
+const allowedOrigins = ['https://drdiscmarket.ca', 'http://localhost:4000', 'https://drdiscmarket-f8ee92798f99.herokuapp.com/',  'https://drdiscmarket.herokuapp.com'];
 
-// Updated CORS configuration
+// CORS configuration
 app.use(cors({
   origin: function(origin, callback) {
     if (!origin) return callback(null, true);
