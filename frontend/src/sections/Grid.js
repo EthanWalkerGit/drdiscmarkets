@@ -20,7 +20,7 @@ function Grid() {
       <div className="max-w-fullPage w-full mx-auto">
         <div className="font-poppins font-bold text-yellow text-4xl">Browse Our Selection</div>
         <div className="grid gap-x-10 gap-y-4 mt-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4">
-          {albums.map(album => (
+          {Array.isArray(albums) && albums.map(album => (
             <div key={album._id} className="flex flex-col bg-listing text-white w-cardw h-cardh border-2 border-gray font-poppins rounded-xl">
               <div className="flex justify-center px-5 pt-5">
                 <img src={album.cover} alt={album.title} className="w-albumw h-albumh object-cover rounded-md" />
