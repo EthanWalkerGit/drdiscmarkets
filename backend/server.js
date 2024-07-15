@@ -10,21 +10,6 @@ const port = process.env.PORT || 4000;
 
 const allowedOrigins = ['http://localhost:3000', 'http://localhost:4000', 'https://drdiscmarket-f8ee92798f99.herokuapp.com', 'https://drdiscmarket.herokuapp.com'];
 
-app.use(express.json())
-
-// Middleware to redirect HTTP to HTTPS
-app.use((req, res, next) => {
-  if (req.header('x-forwarded-proto') !== 'https' && process.env.NODE_ENV === 'production') {
-    res.redirect(`https://${req.header('host')}${req.url}`);
-  } else {
-    next();
-  }
-});
-
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
-
 // Updated CORS configuration
 app.use(cors({
   origin: function(origin, callback) {
@@ -37,6 +22,24 @@ app.use(cors({
   }
 }));
 
+app.use(express.json())
+
+// Middleware to redirect HTTP to HTTPS
+app.use((req, res, next) => {
+  if (req.header('x-forwarded-proto') !== 'https' && process.env.NODE_ENV === 'production') {
+    res.redirect(`https://${req.header('host')}${req.url}`);
+  } else {
+    next();
+  }
+});
+
+app.get('/', (req, res) => {
+  res.send('Welcome to Dr. Disc Market!');
+});
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
 
 app.use('/api/auth', authRoutes);
 
