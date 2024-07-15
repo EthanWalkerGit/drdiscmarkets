@@ -9,7 +9,7 @@ const authRoutes = require('./routes/auth');
 const port = 4000;
 const path = require('path');
 
-const allowedOrigins = ['https://drdiscmarket.ca', 'http://drdiscmarket.ca/', 'drdiscmarket.ca', 'http://localhost:3000', 'https://drdiscmarket-f8ee92798f99.herokuapp.com'];
+const allowedOrigins = ['https://drdiscmarket.ca', 'http://drdiscmarket.ca', 'drdiscmarket.ca', 'http://localhost:3000', 'https://drdiscmarket-f8ee92798f99.herokuapp.com'];
 
 // CORS configuration
 app.use(cors({
