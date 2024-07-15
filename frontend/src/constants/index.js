@@ -4,4 +4,3 @@ export const navLinks = [
   { href: "/contact", label: "Contact" },
   { href: "/shop", label: "Shop" },
 ];
-export const backendURL = '';

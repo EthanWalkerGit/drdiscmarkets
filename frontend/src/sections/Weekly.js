@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'; 
-import { backendURL } from '../constants/index.js';
 
 const Weekly = () => {
   const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
-    axios.get(`${backendURL}/albums`)
+    axios.get('/albums')
       .then(response => {
         setAlbums(response.data);
       })
