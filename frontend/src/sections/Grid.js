@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'; 
+import { API_URL } from '../constants/index.js';
 
 function Grid() {
   const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
-    axios.get('/albums')
+    axios.get(`${API_URL}/albums`)
       .then(response => {
         setAlbums(response.data);
       })
