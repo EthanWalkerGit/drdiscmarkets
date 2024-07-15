@@ -33,8 +33,11 @@ app.use((req, res, next) => {
   }
 });
 
-app.get('/', (req, res) => {
-  res.send('Welcome to Dr. Disc Market!');
+app.use(express.static(path.join(__dirname, 'frontend')));
+
+// The "catchall" handler: for any request that doesn't match one above, send back the front-end's index.html file.
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
 });
 
 app.listen(port, () => {
