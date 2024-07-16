@@ -116,11 +116,11 @@ app.delete('/albums/:id', async(req, res) => {
 })
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '..', 'frontend')));
+  app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
 
-  // The "catchall" handler: for any request that doesn't match one above, send back React's index.html file.
+  // The "catchall" handler: for any request that doesn't match one above, send back React's index.html file from the build directory.
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '..', 'frontend', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '..', 'frontend', 'build', 'index.html'));
   });
 }
 
