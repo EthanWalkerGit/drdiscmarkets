@@ -49,6 +49,16 @@ app.get('/albums', async(req, res) => {
   }
 })
 
+// Query for last 4 entries for weekly.js
+app.get('/albums/weekly', async (req, res) => {
+  try {
+    const albums = await Album.find({}).sort({createdAt: -1}).limit(4);
+    res.status(200).json(albums);
+  } catch {
+    res.status(500).json({message: error.message})
+  }
+});
+
 //get items by id
 app.get('/albums/:id', async(req, res) =>{
   try {
@@ -59,16 +69,6 @@ app.get('/albums/:id', async(req, res) =>{
     res.status(500).json({message: error.message})
   }
 })
-
-// Query for last 4 entries for weekly.js
-app.get('/albums/weekly', async (req, res) => {
-  try {
-    const albums = await Album.find().sort({createdAt: -1}).limit(4);
-    res.status(200).json(albums);
-  } catch {
-    res.status(500).json({message: error.message})
-  }
-});
 
 //add items 
 app.post('/albums', async(req, res) => {

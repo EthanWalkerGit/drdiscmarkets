@@ -2,7 +2,6 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 
 const options = {
-  useUnifiedTopology: true,
   maxPoolSize: 10,
   serverSelectionTimeoutMS: 5000,
   socketTimeoutMS: 45000,
