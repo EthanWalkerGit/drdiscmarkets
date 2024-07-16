@@ -5,7 +5,7 @@ const User = require('./models/User')
 const app = express()
 const cors = require('cors');
 const authRoutes = require('./routes/auth');
-const port = 4000;
+const port = process.env.PORT || 4000;
 const path = require('path');
 const { connectDB } = require('./database');
 
@@ -115,11 +115,12 @@ app.delete('/albums/:id', async(req, res) => {
   }
 })
 
+// Serve static files from the React frontend app
 app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
 
-// The "catchall" handler: for any request that doesn't match one above, send back the front-end's index.html file.
+// The "catchall" handler: for any request that doesn't match one above, send back React's index.html file.
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'frontend', 'build', 'index.html'));
+  res.sendFile(path.resolve(__dirname, '..', 'frontend', 'build', 'index.html'));
 });
 
 app.listen(port, () => {
