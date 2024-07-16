@@ -12,7 +12,7 @@ const { connectDB } = require('./database');
 // connection to the database
 connectDB();
 
-const allowedOrigins = ['https://drdiscmarket.ca', 'http://drdiscmarket.ca', 'drdiscmarket.ca', 'http://localhost:3000', 'https://drdiscmarket-f8ee92798f99.herokuapp.com'];
+const allowedOrigins = ['https://drdiscmarket.ca', 'http://drdiscmarket.ca', 'drdiscmarket.ca', 'http://localhost:3000', 'https://drdiscmarket-f8ee92798f99.herokuapp.com', 'https://drdiscmarket.herokuapp.com', 'drdiscmarket.herokuapp.com'];
 
 // CORS configuration
 app.use(cors({
