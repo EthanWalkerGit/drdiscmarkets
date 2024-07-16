@@ -2,7 +2,7 @@
   "name": "drdiscmarket",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "frontend/src/index.js",
   "scripts": {
   "heroku-postbuild": "npx concurrently \"npm install --prefix frontend\" \"npm install --prefix backend\"",
   "start": "npx concurrently \"npm start --prefix backend\" \"npm start --prefix frontend\""
