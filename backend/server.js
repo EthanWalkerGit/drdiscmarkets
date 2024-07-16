@@ -1,6 +1,5 @@
 require('dotenv').config();
 const express = require('express');
-const mongoose = require('mongoose');
 const Album = require('./models/albumModel')
 const User = require('./models/User')
 const app = express()
@@ -8,6 +7,10 @@ const cors = require('cors');
 const authRoutes = require('./routes/auth');
 const port = 4000;
 const path = require('path');
+const { connectDB } = require('./database');
+
+// connection to the database
+connectDB();
 
 const allowedOrigins = ['https://drdiscmarket.ca', 'http://drdiscmarket.ca', 'drdiscmarket.ca', 'http://localhost:3000', 'https://drdiscmarket-f8ee92798f99.herokuapp.com'];
 
@@ -111,14 +114,4 @@ app.get('*', (req, res) => {
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
-});
-
-// connection
-mongoose
-.connect(process.env.MONGODB_URI)
-.then(() => {
-  console.log('connected to MongoDB')
-})
-.catch((error) => {
-  console.log('error connecting to MongoDB:', error.message)
 });
