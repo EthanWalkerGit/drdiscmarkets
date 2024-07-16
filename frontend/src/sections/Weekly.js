@@ -6,7 +6,7 @@ const Weekly = () => {
   const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
-    axios.get(`${API_URL}/albums`)
+    axios.get(`${API_URL}/albums/weekly`)
       .then(response => {
         setAlbums(response.data);
       })
@@ -20,7 +20,7 @@ const Weekly = () => {
       <div className="mb-6 max-w-fullPage w-full mx-auto">
         <div className="mb-4 font-poppins font-bold text-yellow text-4xl">New This Week</div>
         <div className="grid gap-x-10 gap-y-4 mt-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {Array.isArray(albums) && albums.slice(-4).map(album => (
+        {albums.map(album => (
             <div key={album._id} className="flex flex-col bg-listing text-white w-cardw h-cardh border-2 border-gray font-poppins rounded-xl">
               <div className="flex justify-center px-5 pt-5">
                 <img src={album.cover} alt={album.title} className="w-albumw h-albumh object-cover rounded-md" />

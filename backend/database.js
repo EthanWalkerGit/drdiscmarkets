@@ -1,7 +1,6 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 
-const mongoURI = 'your_mongodb_connection_string_here';
 const options = {
   useUnifiedTopology: true,
   maxPoolSize: 10,
