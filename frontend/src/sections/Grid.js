@@ -6,7 +6,7 @@ function Grid() {
   const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
-    axios.get(`${API_URL}/albums`)
+    axios.get(`/albums`)
       .then(response => {
         setAlbums(response.data);
       })

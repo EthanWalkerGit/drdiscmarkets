@@ -6,7 +6,7 @@ const Weekly = () => {
   const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
-    axios.get(`${API_URL}/albums/weekly`)
+    axios.get(`/albums/weekly`)
       .then(response => {
         setAlbums(response.data);
       })
