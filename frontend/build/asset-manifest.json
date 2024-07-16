@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.bc0d8cfb.css",
+    "main.js": "/static/js/main.7db2a6b5.js",
+    "static/media/frontVinyls.png": "/static/media/frontVinyls.f27bea2a1bbbbe9f61fd.png",
+    "static/media/location.png": "/static/media/location.68e46b3b1925d860ccad.png",
+    "static/media/contactVinyls.png": "/static/media/contactVinyls.6365469a17a3c40dfc8d.png",
+    "static/media/casette.png": "/static/media/casette.3f2bf677325724b146d2.png",
+    "static/media/turntable.png": "/static/media/turntable.33d198e81d873001e7f1.png",
+    "static/media/drdisc.png": "/static/media/drdisc.96c55527c9d6915f350f.png",
+    "index.html": "/index.html",
+    "main.bc0d8cfb.css.map": "/static/css/main.bc0d8cfb.css.map",
+    "main.7db2a6b5.js.map": "/static/js/main.7db2a6b5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bc0d8cfb.css",
+    "static/js/main.7db2a6b5.js"
+  ]
+}
