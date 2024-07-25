@@ -1,5 +1,5 @@
 # Dr Disc Market
-DrDiscMarket is a full-fledged e-commerce platform built using the MERN stack (MongoDB, Express.js, React, and Node.js). It offers a seamless shopping experience with a user-friendly interface and robust backend support.
+DrDiscMarket is a full-fledged e-commerce platform built using the MERN stack (MongoDB, Express.js, React, Node.js as well as Tailwind). It offers a seamless shopping experience with a user-friendly interface and robust backend support.
 
 ## Features
 - ~~User Authentication and Authorization~~
@@ -9,7 +9,7 @@ DrDiscMarket is a full-fledged e-commerce platform built using the MERN stack (M
 - Responsive Design
 
 ## Technologies Used
-- Frontend: React, React Router
+- Frontend: React, Tailwind
 - Backend: Node.js, Express.js
 - Database: MongoDB
 - Authentication: JWT (JSON Web Tokens)
