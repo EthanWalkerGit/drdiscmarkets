@@ -5,7 +5,6 @@ DrDiscMarket is a full-fledged e-commerce platform built using the MERN stack (M
 - ~~User Authentication and Authorization~~
 - Product Browsing ~~and Searching~~
 - ~~Shopping Cart and Checkout~~
-- Order Management
 - Responsive Design
 
 ## Technologies Used
