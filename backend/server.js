@@ -12,27 +12,8 @@ const { connectDB } = require('./database');
 // connection to the database
 connectDB();
 
-const allowedOrigins = [
-  'https://drdiscmarket.ca', 
-  'http://drdiscmarket.ca', 
-  'drdiscmarket.ca', 
-  'http://localhost:3000', 
-  'https://drdiscmarket-f8ee92798f99.herokuapp.com', 
-  'https://drdiscmarket.herokuapp.com', 
-  'drdiscmarket.herokuapp.com'
-];
-
 // CORS configuration
-app.use(cors({
-  origin: function(origin, callback) {
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) === -1) {
-      var msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  }
-}));
+app.use(cors());
 
 app.use(express.json())
 
