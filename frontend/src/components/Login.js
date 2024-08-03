@@ -35,7 +35,7 @@ const Login = ({ setLoggedInUser }) => {
     };
 
     return (
-        <div className="auth-form">
+        <div className="text-white">
             <h2>Login</h2>
             <form onSubmit={onSubmit}>
                 <input type="text" 
