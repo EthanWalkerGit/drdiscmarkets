@@ -16,6 +16,9 @@ export default function Home() {
       <section>
         <ContactFooter />
       </section>
+      <section>
+        <p>Ethan Walker</p>
+      </section>
     </main>
   )
 }
