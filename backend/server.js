@@ -1,13 +1,19 @@
 require('dotenv').config();
 const express = require('express');
-const Album = require('./models/albumModel')
-const User = require('./models/User')
 const app = express()
 const cors = require('cors');
+// Models
+const Album = require('./models/albumModel')
+const User = require('./models/User')
+// connection and routes
 const authRoutes = require('./routes/auth');
 const port = process.env.PORT || 4000;
 const path = require('path');
 const { connectDB } = require('./database');
+//mail setup
+const nodemailer = require('nodemailer');
+
+
 
 // connection to the database
 connectDB();
@@ -103,6 +109,35 @@ app.delete('/albums/:id', async(req, res) => {
     res.status(500).json({message: error.message})
   }
 })
+
+// forum send email
+app.post('/send-email', async (req, res) => {
+  const { name, email, phone, message } = req.body;
+
+  // email transport
+  let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS
+    }
+  });
+
+  // Email options
+  let mailOptions = {
+    from: email,
+    to: process.env.EMAIL_USER,
+    subject: 'Contact Us Form Submission',
+    text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    res.status(200).send('Email sent successfully');
+  } catch (error) {
+    res.status(500).send('Error sending email');
+  }
+});
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
