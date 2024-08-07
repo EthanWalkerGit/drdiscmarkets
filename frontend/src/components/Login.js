@@ -36,7 +36,6 @@ const Login = ({ setLoggedInUser }) => {
 
     return (
         <div className="text-white">
-            <h2>Login</h2>
             <form onSubmit={onSubmit}>
                 <input type="text" 
                        placeholder="Username" 

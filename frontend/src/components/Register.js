@@ -28,12 +28,10 @@ const Register = () => {
 
     return (
         <div className="text-white">
-            <h2>Register</h2>
             <form onSubmit={onSubmit}>
-                <input type="text" placeholder="Username" name="username" value={username} onChange={onChange} required />
+                <input type="text" placeholder="Username" name="username" value={username} onChange={onChange} required/>
                 <input type="password" placeholder="Password" name="password" value={password} onChange={onChange} required />
                 <button type="submit">Register</button>
-                <p>Hello 2</p>
             </form>
             <p className="message">{message}</p>
         </div>
