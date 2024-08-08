@@ -16,6 +16,7 @@ const ContactUs = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
+      // figure this out with a therapist
       const response = await axios.post('/send-email', formData);
       alert(response.data);
     } catch (error) {
