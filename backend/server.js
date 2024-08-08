@@ -12,6 +12,7 @@ const path = require('path');
 const { connectDB } = require('./database');
 //mail setup
 const nodemailer = require('nodemailer');
+const { google } = require('googleapis');
 
 
 
@@ -110,28 +111,46 @@ app.delete('/albums/:id', async(req, res) => {
   }
 })
 
+const OAuth2 = google.auth.OAuth2;
+
+const oauth2Client = new OAuth2(
+  process.env.CLIENT_ID,
+  process.env.CLIENT_SECRET,
+  "https://developers.google.com/oauthplayground"
+);
+
+oauth2Client.setCredentials({
+  refresh_token: process.env.REFRESH_TOKEN
+});
+
 // forum send email
 app.post('/send-email', async (req, res) => {
   const { name, email, phone, message } = req.body;
 
-  // email transport
-  let transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS
-    }
-  });
-
-  // Email options
-  let mailOptions = {
-    from: process.env.EMAIL_USER,
-    to: 'ethanwalker576@gmail.com',
-    subject: 'Contact Us Form Submission',
-    text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`
-  };
-
   try {
+    const accessToken = await oauth2Client.getAccessToken();
+
+    // email transport
+    let transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        type: 'OAuth2',
+        user: process.env.EMAIL_USER,
+        clientId: process.env.CLIENT_ID,
+        clientSecret: process.env.CLIENT_SECRET,
+        refreshToken: process.env.REFRESH_TOKEN,
+        accessToken: accessToken.token
+      }
+    });
+
+    // Email options
+    let mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: 'ethanwalker576@gmail.com',
+      subject: 'Contact Us Form Submission',
+      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`
+    };
+
     await transporter.sendMail(mailOptions);
     res.status(200).send('Email sent successfully');
   } catch (error) {
